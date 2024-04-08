@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Mutations
-  module Auth
+  module Authentication
     class ForgotPassword < BaseMutation
       argument :email, String, required: true
 
@@ -12,7 +12,7 @@ module Mutations
           reset_password_sent_at: Time.zone.now,
           allow_password_change:  true
         )
-        # dispatch forgot password email here
+        Authentication::ForgotPassword.wth(user:).change_password_request.deliver_later
         user
       end
     end

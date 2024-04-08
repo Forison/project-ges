@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Mutations
-  module Auth
+  module Authentication
     class ResetPassword < BaseMutation
       argument :reset_password_token, String, required: true
       argument :password, String, required: true
@@ -14,6 +14,7 @@ module Mutations
           reset_password_token:  '',
           allow_password_change: false
         )
+        Authentication::ForgotPassword.wth(user:).ch_password_request.deliver_later
         user
       end
     end

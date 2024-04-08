@@ -9,7 +9,7 @@ class User < ApplicationRecord
     failed_attempts > 7
   end
 
-  def user_name
+  def name
     "#{last_name} #{first_name}"
   end
 end

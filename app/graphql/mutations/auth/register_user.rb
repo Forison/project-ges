@@ -1,5 +1,5 @@
 module Mutations
-  module Auth
+  module Authentication
     class RegisterUser < BaseMutation
       argument :email, String, required: true
       argument :password, String, required: true
@@ -21,7 +21,7 @@ module Mutations
         )
 
         user.save
-        # dispatch email here for user to confirm their email account
+        Authentication::ConfirmUserMailer.with(user:).welcome.deliver_later
         user
       end
     end

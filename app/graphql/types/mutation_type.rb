@@ -2,11 +2,11 @@
 
 module Types
   class MutationType < Types::BaseObject
-    field :register_user, Types::UserType, null: false, mutation: Mutations::Auth::RegisterUser
-    field :signin_user, Types::UserType, null: false, mutation: Mutations::Auth::SigninUser
-    field :confirm_user, Types::UserType, null: false, mutation: Mutations::Auth::ConfirmUser
-    field :reset_password, Types::UserType, null: false, mutation: Mutations::Auth::ResetPassword
-    field :forgot_password, Types::UserType, null: false, mutation: Mutations::Auth::ForgotPassword
-    field :unlock_user, Types::UserType, null: false, mutation: Mutations::Auth::UnlockUser
+    field :register_user, Types::UserType, null: false, mutation: Mutations::Authentication::RegisterUser
+    field :signin_user, Types::UserType, null: false, mutation: Mutations::Authentication::SigninUser
+    field :confirm_user, Types::UserType, null: false, mutation: Mutations::Authentication::ConfirmUser
+    field :reset_password, Types::UserType, null: false, mutation: Mutations::Authentication::ResetPassword
+    field :forgot_password, Types::UserType, null: false, mutation: Mutations::Authentication::ForgotPassword
+    field :unlock_user, Types::UserType, null: false, mutation: Mutations::Authentication::UnlockUser
   end
 end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Mutations
-  module Auth
+  module Authentication
     class ConfirmUser < BaseMutation
       argument :confirmation_token, String, required: true
 
