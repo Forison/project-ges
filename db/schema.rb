@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2024_04_01_142014) do
     t.string "email"
     t.date "birthday"
     t.string "guardian_email"
+    t.integer "role", default: 0, null: false
     t.json "tokens"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
