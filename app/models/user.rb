@@ -19,4 +19,8 @@ class User < ApplicationRecord
   def name
     "#{last_name} #{first_name}"
   end
+
+  def confirmed?
+    !confirmed_at.nil?
+  end
 end

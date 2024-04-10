@@ -1,12 +1,12 @@
 require 'rails_helper'
 # rubocop:disable Metrics/BlockLength
-describe Mutations::Auth::SigninUser do
+describe Mutations::Authentication::SigninUser do
   setup do
     @confirmed_email = Faker::Internet.email
     @user = create(:user, email: @confirmed_email)
     @email = Faker::Internet.email
     @password = Faker::Internet.password
-    @perform = Mutations::Auth::SigninUser.new(object: nil, field: nil, context: {})
+    @perform = Mutations::Authentication::SigninUser.new(object: nil, field: nil, context: {})
     @login_attempts = 0
   end
 

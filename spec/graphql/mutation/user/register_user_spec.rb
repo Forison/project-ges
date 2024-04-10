@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Mutations::Auth::RegisterUser do
+describe Mutations::Authentication::RegisterUser do
   setup do
     @email = Faker::Internet.email
     @last_name = Faker::Name.last_name
@@ -9,7 +9,7 @@ describe Mutations::Auth::RegisterUser do
   end
 
   it 'Register new user' do
-    user = Mutations::Auth::RegisterUser.new(object: nil, field: nil, context: {}).resolve(
+    user = Mutations::Authentication::RegisterUser.new(object: nil, field: nil, context: {}).resolve(
       email:                @email,
       password:             ['omitted'],
       last_name:            @last_name,
