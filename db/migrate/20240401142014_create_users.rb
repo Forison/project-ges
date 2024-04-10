@@ -29,6 +29,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :email
       t.date :birthday
       t.string :guardian_email
+      t.integer :role, default: 0, :null => false
 
       ## Tokens
       t.json :tokens

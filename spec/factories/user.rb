@@ -1,6 +1,6 @@
 # rubocop:disable Metrics/BlockLength
 FactoryBot.define do
-  factory :user, aliases: %i[student teacher headteacher] do
+  factory :user, aliases: %i[student teacher headteacher admin] do
     first_name { Faker::Name.first_name }
     last_name  { Faker::Name.last_name }
     guardian_email { Faker::Internet.email }

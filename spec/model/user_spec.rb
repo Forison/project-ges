@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe User, type: :model do
   # it "associations" do
   #  p @user
@@ -23,4 +24,17 @@ RSpec.describe User, type: :model do
       assert_equal user_two.reached_max_attempts_limit?, false
     end
   end
+
+  describe 'user roles' do
+    it 'if no role is specified at sign up, user role is student' do
+      user = create(:user)
+      assert_equal user.role, 'student'
+    end
+    it 'if role is specified at sign up, user role is equal to role specified' do
+      role = ['teacher', 'headteacher', 'admin'].sample
+      user = create(:user, role:)
+      assert_equal user.role, role
+    end
+  end
 end
+# rubocop:enable Metrics/BlockLength
