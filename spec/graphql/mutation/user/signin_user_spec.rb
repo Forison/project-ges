@@ -16,10 +16,10 @@ describe Mutations::Authentication::SigninUser do
     expect(@user.failed_attempts).to be == @login_attempts
   end
   it 'Try signing in user with wrong credentials' do
-    expect { @result.resolve(email: @email, password: @password) }.to raise_exception
+    expect { @perform.resolve(email: @email, password: @password) }.to raise_exception
   end
   it 'Try signing in user without providing credentials' do
-    expect { @result.resolve(email: '', password: '') }.to raise_exception
+    expect { @perform.resolve(email: '', password: '') }.to raise_exception
   end
 
   it 'Try signing in user with correct password only' do

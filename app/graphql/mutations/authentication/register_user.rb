@@ -21,7 +21,7 @@ module Mutations
         )
 
         user.save
-        Authentication::ConfirmUserMailer.with(user:).welcome.deliver_later
+        ::Authentication::ConfirmUserMailer.with(user:).welcome.deliver_later
         user
       end
     end

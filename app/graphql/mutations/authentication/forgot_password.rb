@@ -12,7 +12,7 @@ module Mutations
           reset_password_sent_at: Time.zone.now,
           allow_password_change:  true
         )
-        Authentication::ForgotPassword.wth(user:).change_password_request.deliver_later
+        ::Authentication::ForgotPasswordMailer.with(user:).change_password_request.deliver_later
         user
       end
     end
