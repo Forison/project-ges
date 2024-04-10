@@ -12,9 +12,9 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_presence_of :birthday }
   end
   describe 'Testing instance methods for user model' do
-    it '#user_name' do
+    it '#name' do
       user = create(:user, last_name: 'John', first_name: 'Doe')
-      assert_equal user.user_name, 'John Doe'
+      assert_equal user.name, 'John Doe'
     end
     it '#reached_max_attempts_limit?' do
       user_one = create(:user, last_name: 'John', first_name: 'Doe', failed_attempts: (8..10).to_a.sample)
