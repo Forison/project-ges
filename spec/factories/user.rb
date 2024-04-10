@@ -15,8 +15,7 @@ FactoryBot.define do
 
     trait :with_confirmed_user do
       email { Faker::Internet.email }
-      confirmation_token { Faker::Internet.device_token }
-      confirmation_sent_at { Time.zone.now }
+      confirmed_at { Time.zone.now }
     end
 
     trait :with_unlock_user_token do

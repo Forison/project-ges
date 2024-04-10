@@ -23,6 +23,12 @@ RSpec.describe User, type: :model do
       user_two = create(:user, last_name: 'John', first_name: 'Doe', failed_attempts: (1..7).to_a.sample)
       assert_equal user_two.reached_max_attempts_limit?, false
     end
+    it '#confirmed?' do
+      confirmed_user = create(:user, :with_confirmed_user)
+      unconfirmed_user = create(:user, :with_unconfirmed_user)
+      assert_equal confirmed_user.confirmed?, true
+      assert_equal unconfirmed_user.confirmed?, false
+    end
   end
 
   describe 'user roles' do
