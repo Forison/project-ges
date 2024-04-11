@@ -10,7 +10,8 @@ class GraphqlController < ApplicationController
     query = params[:query]
     operation_name = params[:operationName]
     context = {
-      # current_user: current_user
+      current_user: current_user,
+      session: session
     }
     result = ProjectGesSchema.execute(query, variables:, context:, operation_name:)
     render json: result
@@ -48,9 +49,5 @@ class GraphqlController < ApplicationController
 
     render json:   { errors: [{ message: e.message, backtrace: e.backtrace }], data: {} },
            status: :internal_server_error
-  end
-
-  def current_user
-    # Jwt::Authenticator.new(request.headers).call
   end
 end

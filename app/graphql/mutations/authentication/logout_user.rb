@@ -2,7 +2,7 @@ module Mutations
   module Authentication
     class LogoutUser < BaseMutation
       def resolve
-        session.delete(:current_user_id)
+        context[:session].delete(:user_id)
         @current_user = nil
       end
     end

@@ -12,7 +12,7 @@ module Mutations
 
         if user&.authenticate(password) && !user.reached_max_attempts_limit?
           reset_login_attempt(user)
-          # session[:user_id] = user.id
+          context[:session][:user_id] = user.id
           user
         else
           user.update!(failed_attempts: user.failed_attempts += 1)
