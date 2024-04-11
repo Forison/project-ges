@@ -64,3 +64,5 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'graphql', '~> 2.3'
 gem 'jwt'
 gem "sidekiq", "~> 7.2"
+
+gem "jsbundling-rails", "~> 1.3"
