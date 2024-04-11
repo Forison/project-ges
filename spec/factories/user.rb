@@ -8,9 +8,10 @@ FactoryBot.define do
     birthday { Faker::Date.birthday }
 
     trait :with_unconfirmed_user do
-      confirmation_token { Faker::Internet.device_token }
+      email = Faker::Internet.email
+      confirmation_token { Jwt::Encoder.new(email).call }
       confirmation_sent_at { Time.zone.now }
-      unconfirmed_email { Faker::Internet.email }
+      unconfirmed_email { email }
     end
 
     trait :with_confirmed_user do
@@ -19,14 +20,16 @@ FactoryBot.define do
     end
 
     trait :with_unlock_user_token do
-      email { Faker::Internet.email }
-      unlock_token { Faker::Internet.device_token }
+      email = Faker::Internet.email
+      email { email }
+      unlock_token { Jwt::Encoder.new(email).call }
     end
 
-    trait :with_reset_password_user do
-      email { Faker::Internet.email }
-      reset_password_token { Faker::Internet.device_token }
-      confirmation_token { Faker::Internet.device_token }
+    trait :with_reset_password_token do
+      email = Faker::Internet.email
+      email { email }
+
+      reset_password_token { Jwt::Encoder.new(email).call }
       confirmation_sent_at { Time.zone.now }
     end
   end

@@ -9,13 +9,7 @@ module Jwt
     end
 
     def decode!
-      res = JWT.decode(
-        @token,
-        Jwt::Secret.secret,
-        true,
-        verify_iat: true,
-        algorithm:  'HS256'
-      ).first
+      res = JWT.decode(@token, Jwt::Secret.secret, true, { algorithm: 'HS256' }).first
       raise StandardError, 'Invalid token' if res.blank?
 
       res.symbolize_keys
