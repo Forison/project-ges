@@ -1,5 +1,6 @@
 require 'factory_bot_rails'
 
+# preview email: http://localhost:5000/rails/mailers/authentication/forgot_password_mailer/change_password_request
 module Authentication
   class ForgotPasswordMailerPreview < ActionMailer::Preview
     include FactoryBot::Syntax::Methods

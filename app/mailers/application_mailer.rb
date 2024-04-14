@@ -1,6 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
   include AuthenticationHelper
-
-  default from: 'support@selflearn.co'
+  default from: 'from@example.com'
   layout 'mailer'
 end

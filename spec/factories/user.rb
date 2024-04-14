@@ -20,15 +20,12 @@ FactoryBot.define do
     end
 
     trait :with_unlock_user_token do
-      email = Faker::Internet.email
-      email { email }
+      email { Faker::Internet.email }
       unlock_token { Jwt::Encoder.new(email).call }
     end
 
     trait :with_reset_password_token do
-      email = Faker::Internet.email
-      email { email }
-
+      email { Faker::Internet.email }
       reset_password_token { Jwt::Encoder.new(email).call }
       confirmation_sent_at { Time.zone.now }
     end

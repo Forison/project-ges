@@ -6,6 +6,7 @@ class GraphqlController < ApplicationController
   # but you'll have to authenticate your user separately
   # protect_from_forgery with: :null_session
   def execute
+    p "----->> 223 3====>> #{session}"
     variables = prepare_variables(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
@@ -13,7 +14,7 @@ class GraphqlController < ApplicationController
       current_user: current_user,
       session: session
     }
-    result = ProjectGesSchema.execute(query, variables:, context:, operation_name:)
+    result = VirtualGhSchema.execute(query, variables:, context:, operation_name:)
     render json: result
   rescue StandardError => e
     raise e unless Rails.env.development?

@@ -60,7 +60,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "project_ges_production"
+  # config.active_job.queue_name_prefix = "virtual_gh_production"
 
   config.action_mailer.perform_caching = false
 
@@ -117,22 +117,4 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-
-  # Add default email origin address after deployment to production
-  # ActionMailer::Base.default :from => 'default@development-server.com'
-
-  # config.action_mailer.default_url_options = { host: '' }
-  # config.action_mailer.asset_host = ''
-  # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  #   address:         'smtp.gmail.com',
-  #   port:            587,
-  #   domain:          'example.com',
-  #   user_name:       '<username>',
-  #   password:        '<password>',
-  #   authentication:  'cram_md5',
-  #   enable_starttls: true,
-  #   open_timeout:    5,
-  #   read_timeout:    5 
-  # }
 end

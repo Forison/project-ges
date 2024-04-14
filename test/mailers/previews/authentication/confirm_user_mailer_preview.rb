@@ -1,6 +1,6 @@
 require 'factory_bot_rails'
 
-# Email preview url: http://localhost:3000/rails/mailers/authentication/confirm_user_mailer/welcome
+# Email preview url: http://localhost:5000/rails/mailers/authentication/confirm_user_mailer/welcome
 module Authentication
   class ConfirmUserMailerPreview < ActionMailer::Preview
     include FactoryBot::Syntax::Methods
