@@ -139,6 +139,7 @@ GEM
       sqlite3-ruby
       thin
     marcel (1.0.4)
+    material-design-rails (0.1.0)
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.5)
@@ -347,6 +348,7 @@ DEPENDENCIES
   jwt
   listen (~> 3.3)
   mailcatcher
+  material-design-rails
   pg (~> 1.5)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
