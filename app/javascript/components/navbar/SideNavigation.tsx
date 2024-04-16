@@ -1,10 +1,28 @@
-import React, { FC } from 'react'
-import { Box, Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar } from '@mui/material'
+import React from 'react'
+import {
+  Box,
+  Divider,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  ThemeProvider,
+  Toolbar,
+  createTheme,
+} from '@mui/material'
 import InboxIcon from '@mui/icons-material/NotificationsNoneOutlined'
 import MailIcon from '@mui/icons-material/Mail'
 import SideNavigationItems from './SideNavigationItems'
 
 const drawerWidth = 240
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+})
+
 
 interface Props{
   mobileOpen: boolean
@@ -49,6 +67,7 @@ export default function SideNavigation({
     </Box>
   )
   return (
+    <ThemeProvider theme={darkTheme}>
     <Box
         component="nav"
         sx={{ 
@@ -83,5 +102,6 @@ export default function SideNavigation({
           {drawer}
         </Drawer>
       </Box>
+      </ThemeProvider>
   )
 }

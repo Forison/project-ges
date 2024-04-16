@@ -10,5 +10,7 @@ module Types
     field :forgot_password, Types::UserType, null: false, mutation: Mutations::Authentication::ForgotPassword
     field :unlock_user, Types::UserType, null: false, mutation: Mutations::Authentication::UnlockUser
     field :logout_user, Types::UserType, null: false, mutation: Mutations::Authentication::LogoutUser
+    # School
+    # field :school, Types::UserType, null: false, mutation: Mutations::School
   end
 end

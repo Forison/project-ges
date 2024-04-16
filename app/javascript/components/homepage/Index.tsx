@@ -33,7 +33,7 @@ export default function HomePage({}): JSX.Element {
   return (
     <Box sx={{ display: 'flex' }}>
       <TopNavBar handleDrawerToggle={handleDrawerToggle}/>
-      <SideNavigation 
+      <SideNavigation
         mobileOpen={mobileOpen}
         handleDrawerClose={handleDrawerClose}
         handleDrawerTransitionEnd={handleDrawerTransitionEnd}
