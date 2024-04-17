@@ -1,6 +1,10 @@
 module Mutations
   class School < BaseMutation
     # # Schools
+    # name
+    # level
+    # ----
+
     # schools has noticeboard :: This should be a model
 
     # school has faculties :: :: This should be a Enum
@@ -21,7 +25,6 @@ module Mutations
 
     # # Teachers
     # Teachers also belong to school
-
   end
 end
 # has_many :sent_payments, :class_name => 'Payment', :foreign_key => 'sender_id'

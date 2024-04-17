@@ -12,7 +12,7 @@ AllCops:
       - Rakefile
       - config.ru
       - app/controllers/graphql_controller.rb
-      - app/graphql/project_ges_schema.rb
+      - app/graphql/virtual_gh_schema.rb
       - app/graphql/types/base_connection.rb
       - spec/rails_helper.rb
 require:
