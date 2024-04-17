@@ -7,6 +7,8 @@ module Mutations
 
       def resolve(email:)
         user = User.find_by(email:)
+        raise GraphQL::ExecutionError, 'Email not found' if user.nil?
+
         user.update(
           reset_password_token:   Jwt::Encoder.new(email:).call,
           reset_password_sent_at: Time.zone.now,

@@ -12,7 +12,6 @@ module Mutations
 
         if user&.authenticate(password) && !user.reached_max_attempts_limit?
           reset_login_attempt(user)
-          Rails.logger.debug "------->>>> #{context}"
           context[:session][:user_id] = user.id
           user
         else

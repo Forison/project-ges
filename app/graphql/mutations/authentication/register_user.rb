@@ -8,6 +8,7 @@ module Mutations
       argument :birthday, String, required: true
       argument :guardian_email, String, required: false
 
+      # rubocop:disable Metrics/AbcSize
       def resolve(**args)
         user = User.new(
           unconfirmed_email:    args[:email],
@@ -19,11 +20,13 @@ module Mutations
           confirmation_token:   Jwt::Encoder.new(args[:email]).call,
           confirmation_sent_at: Time.zone.now
         )
+        raise GraphQL::ExecutionError, 'Invalid input provided' unless user.save
 
         user.save
         ::Authentication::ConfirmUserMailer.with(user:).welcome.deliver_later
         user
       end
+      # rubocop:enable Metrics/AbcSize
     end
   end
 end

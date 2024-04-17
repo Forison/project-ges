@@ -4,7 +4,7 @@ FactoryBot.define do
     name { Faker::Name.name }
   end
 
-  trait :with_teachers do
+  trait :with_school_teachers do
     teachers { [1] }
   end
 end

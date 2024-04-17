@@ -8,7 +8,7 @@ module Mutations
       def resolve(confirmation_token:)
         email = Jwt::Decoder.new(confirmation_token).call[:result]
         user = User.find_by(unconfirmed_email: email)
-        raise 'Email is already confirmed' if user.nil?
+        raise GraphQL::ExecutionError, 'Email not found' if user.nil?
 
         user.update(
           email:,

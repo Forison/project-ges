@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_04_16_173010) do
+ActiveRecord::Schema.define(version: 2024_04_17_113753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "courses", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "duration"
+    t.string "course_outline"
+    t.integer "students", default: [], array: true
+    t.bigint "school_id", null: false
+    t.bigint "course_teacher_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "discarded", default: false
+    t.index ["course_teacher_id"], name: "index_courses_on_course_teacher_id"
+    t.index ["school_id"], name: "index_courses_on_school_id"
+  end
 
   create_table "schools", force: :cascade do |t|
     t.string "name", null: false
@@ -21,6 +36,7 @@ ActiveRecord::Schema.define(version: 2024_04_16_173010) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "discarded", default: false
     t.index ["user_id"], name: "index_schools_on_user_id"
   end
 
@@ -46,11 +62,14 @@ ActiveRecord::Schema.define(version: 2024_04_16_173010) do
     t.json "tokens"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "discarded", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unconfirmed_email"], name: "index_users_on_unconfirmed_email", unique: true
   end
 
+  add_foreign_key "courses", "schools"
+  add_foreign_key "courses", "users", column: "course_teacher_id"
   add_foreign_key "schools", "users"
 end
