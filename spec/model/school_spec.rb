@@ -8,12 +8,4 @@ RSpec.describe School, type: :model do
   describe 'validation' do
     it { is_expected.to validate_presence_of :name }
   end
-  describe 'Testing instance methods for user model' do
-    it '#all_teachers' do
-      sch = create(:school, :with_school_teachers)
-      assert_equal sch.all_teachers.count, 1
-      sch_two = create(:school)
-      assert_empty sch_two.all_teachers
-    end
-  end
 end

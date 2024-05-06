@@ -7,7 +7,7 @@ module Types
     field :description, String
     field :duration, String
     field :course_outline, String
-    field :students, Integer
+    field :students, [Integer]
     field :school_id, Integer, null: false
     field :course_teacher_id, Integer
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false

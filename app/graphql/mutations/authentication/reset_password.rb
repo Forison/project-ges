@@ -16,7 +16,7 @@ module Mutations
           reset_password_token:  '',
           allow_password_change: false
         )
-        Authentication::ForgotPassword.with(user:).ch_password_request.deliver_later
+        Authentication::ForgotPassword.with(user:).change_password_request.deliver_later
         user
       end
     end

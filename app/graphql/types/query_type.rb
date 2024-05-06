@@ -4,7 +4,6 @@ module Types
   class QueryType < Types::BaseObject
     # User related queries
     field :user, resolver: Queries::User::FindUserById
-    field :user_role, resolver: Queries::User::FindUserByRole
     field :users, resolver: Queries::User::All
     field :current_user, resolver: Queries::User::CurrentUser
     # School related queries

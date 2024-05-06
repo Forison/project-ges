@@ -9,10 +9,12 @@ class GraphqlController < ApplicationController
     variables = prepare_variables(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
+
     context = {
       current_user: current_user,
       session: session
     }
+
     result = VirtualGhSchema.execute(query, variables:, context:, operation_name:)
     render json: result
   rescue StandardError => e

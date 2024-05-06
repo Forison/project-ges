@@ -6,7 +6,7 @@ module Mutations
 
       def resolve(email:, password:)
         user = User.find_by(email:)
-        raise GraphQL::ExecutionError, 'Please create an account' unless user
+        raise GraphQL::ExecutionError, 'Please create or confirm account' unless user
 
         lock_user(user) if user.reached_max_attempts_limit?
 
