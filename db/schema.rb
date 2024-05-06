@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_04_17_113753) do
+ActiveRecord::Schema.define(version: 2024_05_06_140755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.bigint "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+  end
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
@@ -30,13 +38,41 @@ ActiveRecord::Schema.define(version: 2024_04_17_113753) do
     t.index ["school_id"], name: "index_courses_on_school_id"
   end
 
+  create_table "groups", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "members", default: [], array: true
+    t.string "image"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_groups_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.boolean "liked"
+    t.bigint "post_id", null: false
+    t.bigint "comment_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_likes_on_comment_id"
+    t.index ["post_id"], name: "index_likes_on_post_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "content"
+    t.bigint "group_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_posts_on_group_id"
+  end
+
   create_table "schools", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "teachers", default: [], array: true
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "discarded", default: false
+    t.index ["name"], name: "index_schools_on_name", unique: true
     t.index ["user_id"], name: "index_schools_on_user_id"
   end
 
@@ -69,7 +105,12 @@ ActiveRecord::Schema.define(version: 2024_04_17_113753) do
     t.index ["unconfirmed_email"], name: "index_users_on_unconfirmed_email", unique: true
   end
 
+  add_foreign_key "comments", "posts"
   add_foreign_key "courses", "schools"
   add_foreign_key "courses", "users", column: "course_teacher_id"
+  add_foreign_key "groups", "users"
+  add_foreign_key "likes", "comments"
+  add_foreign_key "likes", "posts"
+  add_foreign_key "posts", "groups"
   add_foreign_key "schools", "users"
 end

@@ -1,4 +1,3 @@
-# rubocop:disable Metrics/BlockLength
 FactoryBot.define do
   factory :user, aliases: %i[student teacher headteacher admin] do
     first_name { Faker::Name.first_name }
@@ -8,10 +7,9 @@ FactoryBot.define do
     birthday { Faker::Date.birthday }
 
     trait :with_unconfirmed_user do
-      email = Faker::Internet.email
-      confirmation_token { Jwt::Encoder.new(email).call }
+      unconfirmed_email { Faker::Internet.email }
+      confirmation_token { Jwt::Encoder.new(unconfirmed_email).call }
       confirmation_sent_at { Time.zone.now }
-      unconfirmed_email { email }
     end
 
     trait :with_confirmed_user do
@@ -31,4 +29,3 @@ FactoryBot.define do
     end
   end
 end
-# rubocop:enable Metrics/BlockLength
