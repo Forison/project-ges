@@ -4,7 +4,10 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :first_name, presence: true
   validates :birthday, presence: true
+
   has_many :schools, dependent: :destroy
+  has_many :groups, dependent: :destroy
+  has_many :posts, dependent: :destroy
 
   enum role: { student: 0, teacher: 1, headteacher: 2, admin: 3 }
   after_initialize :set_user_role, if: :new_record?

@@ -23,6 +23,15 @@ module Types
     field :remove_student, Types::CourseType, null: false, mutation: Mutations::SchoolCourse::RemoveStudent
     field :add_student, Types::CourseType, null: false, mutation: Mutations::SchoolCourse::AddStudent
 
-    # Groups, Posts, Comments
+    # Groups
+    field :create_group, Types::GroupType, null: false, mutation: Mutations::SchoolGroup::Create
+    field :update_group, Types::GroupType, null: false, mutation: Mutations::SchoolGroup::Update
+    field :join_group, Types::GroupType, null: false, mutation: Mutations::SchoolGroup::Join
+
+    # Posts
+    field :create_group_post, Types::PostType, null: false, mutation: Mutations::SchoolGroupPost::Create
+    field :update_group_post, Types::PostType, null: false, mutation: Mutations::SchoolGroupPost::Update
+
+    # Comments
   end
 end

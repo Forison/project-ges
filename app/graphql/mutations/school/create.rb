@@ -2,7 +2,6 @@ module Mutations
   module School
     class Create < BaseMutation
       argument :name, String, required: true
-      argument :discarded, Boolean, required: false
 
       def resolve(**args)
         school = context[:current_user].schools.build(args)
