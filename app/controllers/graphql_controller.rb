@@ -12,7 +12,8 @@ class GraphqlController < ApplicationController
 
     context = {
       current_user: current_user,
-      session: session
+      session: session,
+      pundit: self
     }
 
     result = VirtualGhSchema.execute(query, variables:, context:, operation_name:)

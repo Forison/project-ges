@@ -64,9 +64,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "pg", "~> 1.5"
-
 gem 'graphql', '~> 2.3'
 gem 'jwt'
 gem "sidekiq", "~> 7.2"
 gem 'material-design-rails'
 
+gem "pundit", "~> 2.3"

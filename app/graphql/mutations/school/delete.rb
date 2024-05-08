@@ -5,6 +5,7 @@ module Mutations
 
       def resolve(id:)
         school = context[:current_user].schools.find(id)
+        context[:pundit].authorize(school, :destroy?)
         raise GraphQL::ExecutionError, 'School does not exist' if school.nil?
 
         school.update(discarded: true)
