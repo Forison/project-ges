@@ -7,7 +7,11 @@ module Mutations
         school = context[:current_user].schools.build(args)
         context[:pundit].authorize(school, :create?)
         raise GraphQL::ExecutionError, 'School does not exist' if school.nil?
-        return school if school.save
+
+        if school.save
+          ActionCable.server.broadcast('notification_channel', { body: school })
+          return school # TODO: remove this
+        end
 
         raise Graphql::ExecutionError, 'School not created'
       end
