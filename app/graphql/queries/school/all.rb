@@ -7,7 +7,8 @@ module Queries
       type [Types::SchoolType], null: false
 
       def resolve
-        ::School.all
+        context[:pundit].policy_scope(::School.all)
+        # ::School.all
       end
     end
   end
