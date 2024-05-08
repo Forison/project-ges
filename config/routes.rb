@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   end
   post "/graphql", to: "graphql#execute"
   root 'self_learns#index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # mount ActionCable.server => '/cable'
 end
